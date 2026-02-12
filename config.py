@@ -4,15 +4,15 @@ class config:
     # ========================== CLIENT CONFIG ========================== #
     API_ID = 24531634
     API_HASH = "aca0513556aedd6359af7a2f2e6301b6"
-    BOT_TOKEN = "7637698136:AAGgZRIKDa9kegsHJocHn71447RAYmEpKhU"
-    BOT_NAME = "Kafka Honkai"
-    BOT_USERNAME = "kafka_xprobot"
-    BOT_ID = 7637698136
+    BOT_TOKEN = "8212996914:AAECbSmDK5abQcXBK4PqqBH3FrEL9W1Xtm0"
+    BOT_NAME = "Ryzen"
+    BOT_USERNAME = "ryzen_xbot"
+    BOT_ID = 8212996914
     WORKERS = 20
     MAX_MESSAGE_CACHE_SIZE = 150
     MAX_CONCURRENT_TRANSMISSIONS = 10
     SESSION_STRING = (
-        "BQF2UrIAGwsf-C414wqtEnhgACkXnjh9d7ae_JQBqsjM4gRaZu3oy6Ff0-3nwdXo7GljVncnSdO6fxYmNDVLShMmOZ8fsZ4IcL11qdXj6bkgr1Em28FCu2ifD7UKPAsP-gAmlYc0htQgeNBlqk_gm2-qCuczOdE3JVGnFUahWUS96ILm3MI_Y42YrF3mvela6t6m8gmlkKJ9CpgI_2kUcHieqy4ImVNe4qXahfJcSadhsZ-YW3XW1Nxg6hkN1cRZiu4pjctdBh6sKucPjTDDsla2Cuc0j37NvyKEfhY1wT5XIZrQnlXKX1dWMnKNFqMThuxug2qzZe46d5XSPI6tX_IxmbgKLwAAAAHHw0IuAA"
+        "AQIRkdsAZPCeU4rD93j1vx20Otx-vHSRj6B5dvAOEMSpThQWBSwlBmGCsUZlxJFyBHzTRwSfQceFDMGmxMAT7vEJ--10tyKANu9_iycdhrOQw8O_VsxBvYTiWJDOpGF77S-6keLBxmOdohyfMgAXQnavyZw4mH36qC0_fd8ZXhiZcxNSHHWDes_fklejTYcJWPyJA-OtTWuxnwJTVubnvy7kYvlaYlsAyTj7CFLHOniSNQupb3LaVQyk3X5lwYevplSlhhK9VdHqfVtska0IOSWKCpWGOWCqJyb4LTacWaTh_sIKCE8STNYymlfFGL73YoKHNsTVBpuaryps6DB2c3AZCDsZOgAAAAHcZoIcAA"
     )
     START_STICKER_FILE_ID = [
         "CAACAgIAAxkBAAEPI61om1xGDrKOATCTWQjOI9NBsck0AQACUFYAAp7OCwAB99_coLvdsZ42BA",
@@ -25,13 +25,13 @@ class config:
 
     # ========================== BOT INFO ========================== #
     BOT_VERSION = "5.0"
-    OWNER_ID = 6125202012
-    OWNER_USERNAME = "Raci3t"
+    OWNER_ID = 6018803920
+    OWNER_USERNAME = "NottyBcha"
     SUPPORT_CHAT = -1002613457547
     SUPPORT_CHAT_USERNAME = "PookieEmpire"
     SUPPORT_CHAT_LINK = "https://t.me/Pookieempire"
-    LOG_CHANNEL = "pookielog"
-    ERROR_LOG_CHANNEL = "pookielog" # Optional error log
+    LOG_CHANNEL = -1003830570193
+    ERROR_LOG_CHANNEL = -1003830570193 # Optional error log
     DOWNLOAD_LOCATION = "./downloads"
     COMMAND_PREFIXES = ["/", "!", ".", "#", "$", "%", "&", "?"]
     CMD_STARTERS = "/.!&#%$"
@@ -43,9 +43,9 @@ class config:
     ALIVE_IMG_URL = "https://files.catbox.moe/xj52dr.jpg"
 
     # ========================== KHUSHI ========================== #
-    KHUSHI = 7876439267
-    ZARYAB = 7296704435
-    KHUSHI_USERNAME = "MysticSylvie"
+    KHUSHI = 8417697552
+    ZARYAB = 6018803920
+    KHUSHI_USERNAME = "asbeemqtz"
 
     # ========================== DATABASE ========================== #
     MONGODB_URI = "mongodb+srv://kafka:kafka@cluster0.z4xolqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
