@@ -48,8 +48,8 @@ class config:
     KHUSHI_USERNAME = "asbeemqtz"
 
     # ========================== DATABASE ========================== #
-    MONGODB_URI = "mongodb+srv://kafka:kafka@cluster0.z4xolqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    DATABASE_NAME = "Kafka"
+    MONGODB_URI = "mongodb+srv://lollolopp0900:slayersan@cluster0.mge1ngz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    DATABASE_NAME = "test"
 
     # ========================== APIs ========================== #
     API_URL = "https://api.thequickearn.xyz"
