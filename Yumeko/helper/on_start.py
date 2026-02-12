@@ -10,7 +10,7 @@ RESTART_DATA_FILE = "restart_data.json"
 
 # --- Restart message handling ---
 def save_restart_data(chat_id, message_id):
-    """Save the chat and message ID for editing after restart."""
+    """Save chat and message ID for editing after restart."""
     with open(RESTART_DATA_FILE, "w") as f:
         json.dump({"chat_id": chat_id, "message_id": message_id}, f)
 
@@ -24,15 +24,16 @@ def clear_restart_data():
     if os.path.exists(RESTART_DATA_FILE):
         os.remove(RESTART_DATA_FILE)
 
+# --- Safe message sending ---
 async def safe_send_message(peer, text, **kwargs):
     """
-    Safely send a message to a username or numeric ID.
-    Ignores PeerIdInvalid or other exceptions.
+    Send a message safely.
+    Peer can be username (preferred) or numeric ID.
     """
     try:
         await app.send_message(peer, text, **kwargs)
     except PeerIdInvalid:
-        log.warning(f"[on_start] Invalid peer: {peer}")
+        log.warning(f"[on_start] Invalid peer: {peer} (bot may not have access)")
     except Exception as e:
         log.warning(f"[on_start] Failed to send message to {peer}: {e}")
 
@@ -45,10 +46,10 @@ def edit_restart_message():
                 await app.edit_message_text(
                     chat_id=restart_data["chat_id"],
                     message_id=restart_data["message_id"],
-                    text="**Restarted successfully! ✅**"
+                    text="**Bot restarted successfully! ✅**"
                 )
             except PeerIdInvalid:
-                log.warning(f"[on_start] Cannot edit message: invalid peer {restart_data['chat_id']}")
+                log.warning(f"[on_start] Cannot edit message, invalid peer ID: {restart_data['chat_id']}")
             except Exception as e:
                 log.warning(f"[on_start] Failed to edit restart message: {e}")
             finally:
@@ -69,20 +70,12 @@ def clear_downloads_folder():
 # --- Startup notification ---
 def notify_startup():
     """
-    Notify log channels safely.
-    Avoid sending to user IDs at startup to prevent PeerIdInvalid.
+    Notify log and error channels safely.
+    Only works for channels/groups the bot is already in.
     """
     async def notify():
-        # Notify main log channel safely
         if config.LOG_CHANNEL:
-            await safe_send_message(
-                config.LOG_CHANNEL,
-                "**Bot has started successfully! ✅**"
-            )
-        # Notify error channel if different
+            await safe_send_message(config.LOG_CHANNEL, "**Bot has started successfully! ✅**")
         if config.ERROR_LOG_CHANNEL and config.ERROR_LOG_CHANNEL != config.LOG_CHANNEL:
-            await safe_send_message(
-                config.ERROR_LOG_CHANNEL,
-                "**Bot started. Ready to log errors. ✅**"
-            )
+            await safe_send_message(config.ERROR_LOG_CHANNEL, "**Bot started. Ready to log errors. ✅**")
     asyncio.get_event_loop().run_until_complete(notify())
