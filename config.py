@@ -27,9 +27,9 @@ class config:
     BOT_VERSION = "5.0"
     OWNER_ID = 6018803920
     OWNER_USERNAME = "NottyBcha"
-    SUPPORT_CHAT = -1002613457547
-    SUPPORT_CHAT_USERNAME = "PookieEmpire"
-    SUPPORT_CHAT_LINK = "https://t.me/Pookieempire"
+    SUPPORT_CHAT = -1002333824980
+    SUPPORT_CHAT_USERNAME = "Mahabharat_Chat"
+    SUPPORT_CHAT_LINK = "https://t.me/Mahabharat_Chat"
     LOG_CHANNEL = -1003830570193
     ERROR_LOG_CHANNEL = -1003830570193 # Optional error log
     DOWNLOAD_LOCATION = "./downloads"
