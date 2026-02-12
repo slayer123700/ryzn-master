@@ -16,6 +16,7 @@ import shutil
 from Yumeko.modules.antiflood import cleanup_flood_tracker
 import random
 from pyrogram.errors import PeerIdInvalid
+from Yumeko.helper.on_start import edit_restart_message, clear_downloads_folder, notify_startup, safe_send_message
 
 async def safe_get_peer(app, peer_id):
     """
