@@ -15,6 +15,22 @@ from Yumeko.decorator.errors import error
 import shutil
 from Yumeko.modules.antiflood import cleanup_flood_tracker
 import random
+from pyrogram.errors import PeerIdInvalid
+
+async def safe_get_peer(app, peer_id):
+    """
+    Safely fetch a Telegram peer (user/group/channel).
+    Returns the Chat object if found, else None.
+    """
+    try:
+        peer = await app.get_chat(peer_id)  # fetch from Telegram if not in session
+        return peer
+    except PeerIdInvalid:
+        log.warning(f"Invalid peer ID: {peer_id}")
+    except Exception as e:
+        log.warning(f"Failed to get peer {peer_id}: {e}")
+    return None
+
 MODULES = ["modules", "watchers", "admin", "decorator"]
 LOADED_MODULES = {}
 
