@@ -30,8 +30,8 @@ class config:
     SUPPORT_CHAT = -1002333824980
     SUPPORT_CHAT_USERNAME = "Mahabharat_Chat"
     SUPPORT_CHAT_LINK = "https://t.me/Mahabharat_Chat"
-    LOG_CHANNEL = -1003830570193
-    ERROR_LOG_CHANNEL = -1003830570193 # Optional error log
+    LOG_CHANNEL = "ryzenlogs"
+    ERROR_LOG_CHANNEL = "ryzenlogs" # Optional error log
     DOWNLOAD_LOCATION = "./downloads"
     COMMAND_PREFIXES = ["/", "!", ".", "#", "$", "%", "&", "?"]
     CMD_STARTERS = "/.!&#%$"
