@@ -25,7 +25,10 @@ def clear_restart_data():
         os.remove(RESTART_DATA_FILE)
 
 async def safe_send_message(peer, text, **kwargs):
-    """Send message safely to a username or numeric ID."""
+    """
+    Safely send a message to a username or numeric ID.
+    Ignores PeerIdInvalid or other exceptions.
+    """
     try:
         await app.send_message(peer, text, **kwargs)
     except PeerIdInvalid:
@@ -34,7 +37,7 @@ async def safe_send_message(peer, text, **kwargs):
         log.warning(f"[on_start] Failed to send message to {peer}: {e}")
 
 def edit_restart_message():
-    """Edit the previous restart message if exists."""
+    """Edit the previous restart message if it exists."""
     restart_data = load_restart_data()
     if restart_data:
         async def edit():
@@ -44,6 +47,8 @@ def edit_restart_message():
                     message_id=restart_data["message_id"],
                     text="**Restarted successfully! ✅**"
                 )
+            except PeerIdInvalid:
+                log.warning(f"[on_start] Cannot edit message: invalid peer {restart_data['chat_id']}")
             except Exception as e:
                 log.warning(f"[on_start] Failed to edit restart message: {e}")
             finally:
@@ -63,13 +68,18 @@ def clear_downloads_folder():
 
 # --- Startup notification ---
 def notify_startup():
-    """Notify log channel or support chat safely."""
+    """
+    Notify log channels safely.
+    Avoid sending to user IDs at startup to prevent PeerIdInvalid.
+    """
     async def notify():
-        await safe_send_message(
-            config.LOG_CHANNEL,
-            "**Bot has started successfully! ✅**"
-        )
-        # Optional: notify error channel if different
+        # Notify main log channel safely
+        if config.LOG_CHANNEL:
+            await safe_send_message(
+                config.LOG_CHANNEL,
+                "**Bot has started successfully! ✅**"
+            )
+        # Notify error channel if different
         if config.ERROR_LOG_CHANNEL and config.ERROR_LOG_CHANNEL != config.LOG_CHANNEL:
             await safe_send_message(
                 config.ERROR_LOG_CHANNEL,
